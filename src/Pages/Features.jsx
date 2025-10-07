@@ -2,10 +2,12 @@ import React from 'react'
 import bgImage from '../assets/bg.webp'
 import phone1 from '../assets/phone1.webp'
 import phone2 from '../assets/phone2.webp'
+import phone3 from '../assets/phone3.webp'
+import phone4 from '../assets/phone4.webp'
 
 const Features = () => {
   return (
-    <section className="relative py-24" style={{ backgroundColor: '#4B3DBF' }}>
+    <section className="relative py-24 overflow-hidden" style={{ backgroundColor: '#4B3DBF' }}>
       {/* decorative background like hero */}
       <div
         aria-hidden
@@ -65,7 +67,7 @@ const Features = () => {
         </div>
       </div>
       {/* Second block - Meals context */}
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-16 pb-24">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-17 pb-24">
         {/* decorative background like hero for second block */}
         <div
           aria-hidden
@@ -98,10 +100,10 @@ const Features = () => {
           {/* Phones */}
           <div className="flex justify-center gap-6">
             <div className="w-64 max-w-[280px] aspect-[9/19] rounded-[2.5rem] bg-white/10 border border-white/20 backdrop-blur-sm overflow-hidden">
-              <img src={phone1} alt="App screen - meals 1" className="w-full h-full object-cover select-none" />
+              <img src={phone3} alt="App screen - meals 1" className="w-full h-full object-cover select-none" />
             </div>
             <div className="w-64 max-w-[280px] aspect-[9/19] rounded-[2.5rem] bg-white/10 border border-white/20 backdrop-blur-sm overflow-hidden">
-              <img src={phone2} alt="App screen - meals 2" className="w-full h-full object-cover select-none" />
+              <img src={phone4} alt="App screen - meals 2" className="w-full h-full object-cover select-none" />
             </div>
           </div>
 
