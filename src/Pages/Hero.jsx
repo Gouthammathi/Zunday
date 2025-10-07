@@ -175,8 +175,8 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Features section under hero */}
-      <div id="features">
+      {/* Features section under hero - negative margin to eliminate gap */}
+      <div id="features" style={{ marginTop: '-300px' }}>
         <Features />
       </div>
     </div>

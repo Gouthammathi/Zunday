@@ -1,9 +1,11 @@
 import React from 'react'
 import bgImage from '../assets/bg.webp'
+import phone1 from '../assets/phone1.webp'
+import phone2 from '../assets/phone2.webp'
 
 const Features = () => {
   return (
-    <section className="relative py-16" style={{ backgroundColor: '#4B3DBF' }}>
+    <section className="relative py-24" style={{ backgroundColor: '#4B3DBF' }}>
       {/* decorative background like hero */}
       <div
         aria-hidden
@@ -17,45 +19,106 @@ const Features = () => {
           style={{ width: '80rem', height: 'auto', mixBlendMode: 'luminosity' }}
         />
       </div>
+
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="font-urbanist text-white text-3xl md:text-4xl font-bold mb-2">
-            Everything you need to succeed
-          </h2>
-          <p className="font-urbanist text-white/80 text-lg">
-            Powerful features designed to help your business grow faster
+        {/* Heading */}
+        <div className="text-center mb-10">
+          <div className="flex items-center justify-center gap-4 mb-3">
+            <span className="hidden md:block flex-1 max-w-[240px] h-px border-t border-dashed border-[#FDD621]/80" style={{borderWidth: '1px', borderImage: 'repeating-linear-gradient(to right, #FDD621 0px, #FDD621 8px, transparent 8px, transparent 12px) 1'}}></span>
+            <h2 className="font-urbanist text-white text-2xl md:text-3xl tracking-widest font-bold">
+              EXPLORE OUR <span className="text-[#FDD621]">FEATURES</span>
+            </h2>
+            <span className="hidden md:block flex-1 max-w-[240px] h-px border-t border-dashed border-[#FDD621]/80" style={{borderWidth: '1px', borderImage: 'repeating-linear-gradient(to right, #FDD621 0px, #FDD621 8px, transparent 8px, transparent 12px) 1'}}></span>
+          </div>
+          <p className="font-urbanist text-[#FDD621] italic font-extrabold text-sm md:text-base">
+            Fresh Groceries Delivered To Your Doorstep
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
-          <div className="p-8 bg-white/95 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
-            <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-              <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-              </svg>
+        {/* Content */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+          {/* Phones placeholder area (user will provide screenshots) */}
+          <div className="flex justify-center gap-6">
+            <div className="w-64 max-w-[280px] aspect-[9/19] rounded-[2.5rem] bg-white/10 border border-white/20 backdrop-blur-sm overflow-hidden">
+              <img src={phone1} alt="App screen 1" className="w-full h-full object-cover select-none" />
             </div>
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">Lightning Fast</h3>
-            <p className="text-gray-600">Optimized performance for seamless user experience</p>
+            <div className="w-64 max-w-[280px] aspect-[9/19] rounded-[2.5rem] bg-white/10 border border-white/20 backdrop-blur-sm overflow-hidden">
+              <img src={phone2} alt="App screen 2" className="w-full h-full object-cover select-none" />
+            </div>
           </div>
 
-          <div className="p-8 bg-white/95 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
-            <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-              <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-              </svg>
+          {/* Right feature pills */}
+          <div className="space-y-6">
+            <div className="rounded-2xl px-6 py-5 bg-white/15 backdrop-blur-md text-white">
+              <h3 className="font-urbanist text-lg md:text-xl font-semibold mb-1">Quick Delivery</h3>
+              <p className="text-white/80 text-sm md:text-base">Get essentials delivered in under 60 minutes.</p>
             </div>
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">Secure & Safe</h3>
-            <p className="text-gray-600">Enterprise-grade security to protect your data</p>
+            <div className="rounded-2xl px-6 py-5 bg-white/15 backdrop-blur-md text-white">
+              <h3 className="font-urbanist text-lg md:text-xl font-semibold mb-1">Wide Range Of Products</h3>
+              <p className="text-white/80 text-sm md:text-base">Fruits, Vegetables, Snacks, And Beverages.</p>
+            </div>
+            <div className="rounded-2xl px-6 py-5 bg-white/15 backdrop-blur-md text-white">
+              <h3 className="font-urbanist text-lg md:text-xl font-semibold mb-1">Smart Reordering</h3>
+              <p className="text-white/80 text-sm md:text-base">Easily reorder your favorites with one tap.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      {/* Second block - Meals context */}
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-16 pb-24">
+        {/* decorative background like hero for second block */}
+        <div
+          aria-hidden
+          className="absolute top-0 inset-x-0 mx-auto"
+          style={{ width: '100%', maxWidth: '80rem', zIndex: 0 }}
+        >
+          <img
+            src={bgImage}
+            alt=""
+            className="block pointer-events-none select-none"
+            style={{ width: '80rem', height: 'auto', mixBlendMode: 'luminosity' }}
+          />
+        </div>
+        {/* Heading duplicate */}
+        <div className="relative z-10 text-center mb-10">
+          <div className="flex items-center justify-center gap-4 mb-3">
+            <span className="hidden md:block flex-1 max-w-[240px] h-px border-t border-dashed border-[#FDD621]/80" style={{borderWidth: '1px', borderImage: 'repeating-linear-gradient(to right, #FDD621 0px, #FDD621 8px, transparent 8px, transparent 12px) 1'}}></span>
+            <h2 className="font-urbanist text-white text-2xl md:text-3xl tracking-widest font-bold">
+              EXPLORE OUR <span className="text-[#FDD621]">FEATURES</span>
+            </h2>
+            <span className="hidden md:block flex-1 max-w-[240px] h-px border-t border-dashed border-[#FDD621]/80" style={{borderWidth: '1px', borderImage: 'repeating-linear-gradient(to right, #FDD621 0px, #FDD621 8px, transparent 8px, transparent 12px) 1'}}></span>
+          </div>
+          <p className="font-urbanist text-[#FDD621] italic font-extrabold text-sm md:text-base">
+            Your Favorite Meals, Delivered Fast
+          </p>
+        </div>
+
+        {/* Content */}
+        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+          {/* Phones */}
+          <div className="flex justify-center gap-6">
+            <div className="w-64 max-w-[280px] aspect-[9/19] rounded-[2.5rem] bg-white/10 border border-white/20 backdrop-blur-sm overflow-hidden">
+              <img src={phone1} alt="App screen - meals 1" className="w-full h-full object-cover select-none" />
+            </div>
+            <div className="w-64 max-w-[280px] aspect-[9/19] rounded-[2.5rem] bg-white/10 border border-white/20 backdrop-blur-sm overflow-hidden">
+              <img src={phone2} alt="App screen - meals 2" className="w-full h-full object-cover select-none" />
+            </div>
           </div>
 
-          <div className="p-8 bg-white/95 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
-            <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-              <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" />
-              </svg>
+          {/* Right feature pills */}
+          <div className="space-y-6">
+            <div className="rounded-2xl px-6 py-5 bg-white/15 backdrop-blur-md text-white">
+              <h3 className="font-urbanist text-lg md:text-xl font-semibold mb-1">Instant Booking</h3>
+              <p className="text-white/80 text-sm md:text-base">Reserve a table in just a few taps.</p>
             </div>
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">Analytics</h3>
-            <p className="text-gray-600">Real-time insights to make better decisions</p>
+            <div className="rounded-2xl px-6 py-5 bg-white/15 backdrop-blur-md text-white">
+              <h3 className="font-urbanist text-lg md:text-xl font-semibold mb-1">Special Offers</h3>
+              <p className="text-white/80 text-sm md:text-base">Exclusive discounts available only to app users.</p>
+            </div>
+            <div className="rounded-2xl px-6 py-5 bg-white/15 backdrop-blur-md text-white">
+              <h3 className="font-urbanist text-lg md:text-xl font-semibold mb-1">Stackable Rewards</h3>
+              <p className="text-white/80 text-sm md:text-base">Combine loyalty points with ongoing discounts.</p>
+            </div>
           </div>
         </div>
       </div>
