@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import bgImage from '../assets/bg.png';
-import mobileImage from '../assets/mobile.png';
+import mobileImage from '../assets/mobile.webp';
 
 const Hero = () => {
   return (
