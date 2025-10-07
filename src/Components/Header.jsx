@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -17,6 +17,17 @@ const Header = () => {
 
   const isActive = (path) => location.pathname === path;
 
+  const handleFeaturesClick = (e) => {
+    // If we're on home, smooth scroll to #features
+    if (location.pathname === '/') {
+      e.preventDefault();
+      const el = document.getElementById('features');
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+  };
+
   return (
     <header className="sticky top-0 z-50">
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -32,6 +43,7 @@ const Header = () => {
               <Link
                 key={link.path}
                 to={link.path}
+                onClick={link.name === 'Features' ? handleFeaturesClick : undefined}
                 className={`text-sm font-medium transition-colors duration-200 ${
                   isActive(link.path)
                     ? 'text-[#FDD621]'
