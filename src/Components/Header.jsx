@@ -1,61 +1,57 @@
-import React, { useState } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const location = useLocation();
+  const [activeNav, setActiveNav] = useState('Home');
 
   const navLinks = [
     { name: 'Home', path: '/' },
     { name: 'Features', path: '/features' },
     { name: 'Vendors', path: '/vendors' },
     { name: 'Team', path: '/team' },
-    { name: 'Blog', path: '/blogs' },
+    { name: 'Blog', path: '/' },
     { name: 'FAQ', path: '/faq' },
     { name: 'Contact', path: '/contact' },
   ];
 
-  const isActive = (path) => location.pathname === path;
-
   const handleNavLinkClick = (name, e, isMobile = false) => {
-    if (location.pathname === '/' && (name === 'Features' || name === 'Vendors' || name === 'Team' || name === 'FAQ' || name === 'Contact')) {
-      e.preventDefault();
-      const targetId = name === 'Features' ? 'features' : name === 'Vendors' ? 'vendors' : name === 'Team' ? 'team' : name === 'FAQ' ? 'faq' : 'contact';
-      const el = document.getElementById(targetId);
-      if (el) {
-        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-      if (isMobile) setIsMenuOpen(false);
-    } else if (isMobile) {
-      setIsMenuOpen(false);
-    }
+    e.preventDefault();
+    const targetId = name === 'Features' ? 'features' : name === 'Vendors' ? 'vendors' : name === 'Team' ? 'team' : name === 'FAQ' ? 'faq' : name === 'Contact' ? 'contact' : 'top';
+    const el = targetId === 'top' ? null : document.getElementById(targetId);
+    const headerOffset = 64; // sticky header height
+    const targetTop = targetId === 'top' ? 0 : el ? el.getBoundingClientRect().top + window.scrollY - headerOffset : 0;
+    window.scrollTo({ top: targetTop, behavior: 'smooth' });
+    if (isMobile) setIsMenuOpen(false);
+    setActiveNav(name);
   };
+
+  useEffect(() => {
+    setActiveNav('Home');
+  }, []);
 
   return (
     <header className="sticky top-0 z-50">
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2">
+          <a href="#top" onClick={(e)=>handleNavLinkClick('Home', e, false)} className="flex items-center space-x-2">
             <div className="text-2xl font-bold text-white">Zunday</div>
-          </Link>
+          </a>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            {navLinks.map((link) => (
-              <Link
-                key={link.path}
-                to={link.path}
-                onClick={(e) => handleNavLinkClick(link.name, e, false)}
-                className={`text-sm font-medium transition-colors duration-200 ${
-                  isActive(link.path)
-                    ? 'text-[#FDD621]'
-                    : 'text-white hover:text-[#FDD621]'
-                }`}
-              >
-                {link.name}
-              </Link>
-            ))}
+            {navLinks.map((link) => {
+              const isActiveLink = activeNav === link.name;
+              return (
+                <button
+                  key={link.path}
+                  onClick={(e) => handleNavLinkClick(link.name, e, false)}
+                  className={`text-sm font-medium transition-colors duration-200 ${isActiveLink ? 'text-[#FDD621]' : 'text-white hover:text-[#FDD621]'}`}
+                >
+                  {link.name}
+                </button>
+              );
+            })}
           </div>
 
           {/* CTA Button */}
@@ -63,7 +59,11 @@ const Header = () => {
             {/* <button className="px-4 py-2 text-sm font-medium text-white hover:text-[#FDD621] transition-colors">
               Sign In
             </button> */}
-            <button className="px-4 py-2 text-sm font-medium text-white bg-transparent border-2 border-white rounded-lg hover:bg-[#FDD621] hover:border-[#FDD621] hover:text-gray-900 transition-colors">
+            <button onClick={(e)=>handleNavLinkClick('Contact', e, false)} className={`px-4 py-2 text-sm font-medium rounded-lg transition-colors border-2 ${
+              activeNav === 'Contact'
+                ? 'bg-[#FDD621] border-[#FDD621] text-gray-900'
+                : 'bg-transparent border-white text-white hover:bg-[#FDD621] hover:border-[#FDD621] hover:text-gray-900'
+            }`}>
               Contact Us
             </button>
           </div>
@@ -95,26 +95,21 @@ const Header = () => {
         {isMenuOpen && (
           <div className="md:hidden py-4 border-t border-white/20">
             <div className="flex flex-col space-y-4">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.path}
-                  to={link.path}
-                  onClick={(e) => handleNavLinkClick(link.name, e, true)}
-                  className={`text-sm font-medium transition-colors duration-200 ${
-                    isActive(link.path)
-                      ? 'text-[#FDD621]'
-                      : 'text-white hover:text-[#FDD621]'
-                  }`}
-                >
-                  {link.name}
-                </Link>
-              ))}
+              {navLinks.map((link) => {
+                const isActiveLink = activeNav === link.name;
+                return (
+                  <button
+                    key={link.path}
+                    onClick={(e) => handleNavLinkClick(link.name, e, true)}
+                    className={`text-sm font-medium transition-colors duration-200 ${isActiveLink ? 'text-[#FDD621]' : 'text-white hover:text-[#FDD621]'}`}
+                  >
+                    {link.name}
+                  </button>
+                );
+              })}
               <div className="pt-4 border-t border-white/20 space-y-2">
-                <button className="w-full px-4 py-2 text-sm font-medium text-white hover:text-[#FDD621] transition-colors">
-                  Sign In
-                </button>
-                <button className="w-full px-4 py-2 text-sm font-medium text-white bg-transparent border-2 border-white rounded-lg hover:bg-[#FDD621] hover:border-[#FDD621] hover:text-gray-900 transition-colors">
-                  
+                <button onClick={(e)=>handleNavLinkClick('Contact', e, true)} className="w-full px-4 py-2 text-sm font-medium text-white bg-transparent border-2 border-white rounded-lg hover:bg-[#FDD621] hover:border-[#FDD621] hover:text-gray-900 transition-colors">
+                  Contact Us
                 </button>
               </div>
             </div>

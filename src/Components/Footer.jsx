@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -36,9 +35,9 @@ export const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
           {/* Brand Section */}
           <div className="lg:col-span-2">
-            <Link to="/" className="inline-block">
+            <a href="#top" className="inline-block">
               <div className="text-2xl font-bold text-white mb-4">Zunday</div>
-            </Link>
+            </a>
             <p className="text-sm text-gray-400 mb-4 max-w-sm">
               Empowering businesses with innovative solutions. Join thousands of satisfied customers who trust Zunday for their daily operations.
             </p>
@@ -65,12 +64,9 @@ export const Footer = () => {
             <ul className="space-y-2">
               {footerLinks.product.map((link) => (
                 <li key={link.name}>
-                  <Link
-                    to={link.path}
-                    className="text-sm text-gray-400 hover:text-white transition-colors"
-                  >
+                  <a href="#" className="text-sm text-gray-400 hover:text-white transition-colors">
                     {link.name}
-                  </Link>
+                  </a>
                 </li>
               ))}
             </ul>
@@ -82,12 +78,9 @@ export const Footer = () => {
             <ul className="space-y-2">
               {footerLinks.company.map((link) => (
                 <li key={link.name}>
-                  <Link
-                    to={link.path}
-                    className="text-sm text-gray-400 hover:text-white transition-colors"
-                  >
+                  <a href="#" className="text-sm text-gray-400 hover:text-white transition-colors">
                     {link.name}
-                  </Link>
+                  </a>
                 </li>
               ))}
             </ul>
@@ -99,12 +92,9 @@ export const Footer = () => {
             <ul className="space-y-2">
               {footerLinks.legal.map((link) => (
                 <li key={link.name}>
-                  <Link
-                    to={link.path}
-                    className="text-sm text-gray-400 hover:text-white transition-colors"
-                  >
+                  <a href="#" className="text-sm text-gray-400 hover:text-white transition-colors">
                     {link.name}
-                  </Link>
+                  </a>
                 </li>
               ))}
             </ul>

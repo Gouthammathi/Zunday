@@ -17,7 +17,7 @@ import Contact from './Contact';
 
 const Hero = () => {
   return (
-    <div className="relative" style={{
+    <div id="top" className="relative" style={{
       backgroundColor: '#4B3DBF'
     }}>
       {/* Decorative background image layer (top, not stretched) */}
