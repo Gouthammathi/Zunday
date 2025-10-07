@@ -49,7 +49,7 @@ const Header = () => {
               Sign In
             </button> */}
             <button className="px-4 py-2 text-sm font-medium text-white bg-transparent border-2 border-white rounded-lg hover:bg-[#FDD621] hover:border-[#FDD621] hover:text-gray-900 transition-colors">
-              Get Started
+              Contact Us
             </button>
           </div>
 
@@ -99,7 +99,7 @@ const Header = () => {
                   Sign In
                 </button>
                 <button className="w-full px-4 py-2 text-sm font-medium text-white bg-transparent border-2 border-white rounded-lg hover:bg-[#FDD621] hover:border-[#FDD621] hover:text-gray-900 transition-colors">
-                  Get Started
+                  
                 </button>
               </div>
             </div>
