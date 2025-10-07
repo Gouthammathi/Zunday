@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import bgImage from '../assets/bg.png';
+import bgImage from '../assets/bg.webp';
 import mobileImage from '../assets/mobile.webp';
 
 const Hero = () => {
