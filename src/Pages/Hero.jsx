@@ -1,83 +1,84 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import bgImage from '../assets/bg.png';
+import mobileImage from '../assets/mobile.png';
 
 const Hero = () => {
   return (
-    <div className="bg-gradient-to-b from-blue-50 to-white">
-      {/* Hero Section */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28">
-        <div className="text-center">
-          {/* Badge */}
-          <div className="inline-flex items-center px-4 py-2 bg-blue-100 text-blue-600 rounded-full text-sm font-medium mb-6">
-            <span className="w-2 h-2 bg-blue-600 rounded-full mr-2 animate-pulse"></span>
-            New: Exciting features just launched!
-          </div>
-
-          {/* Main Heading */}
-          <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-            Transform Your Business
-            <br />
-            <span className="text-blue-600">With Zunday</span>
-          </h1>
-
-          {/* Subheading */}
-          <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-            The all-in-one platform that empowers businesses to streamline operations,
-            connect with vendors, and achieve unprecedented growth.
-          </p>
-
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-            <button className="px-8 py-4 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-all transform hover:scale-105 shadow-lg">
-              Get Started Free
-            </button>
-            <button className="px-8 py-4 bg-white text-gray-700 font-semibold rounded-lg border-2 border-gray-300 hover:border-blue-600 hover:text-blue-600 transition-all">
-              Watch Demo
-            </button>
-          </div>
-
-          {/* Trust Indicators */}
-          <div className="flex items-center justify-center gap-8 text-sm text-gray-500">
-            <div className="flex items-center gap-2">
-              <svg className="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-              </svg>
-              <span>Free 14-day trial</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <svg className="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-              </svg>
-              <span>No credit card required</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <svg className="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-              </svg>
-              <span>Cancel anytime</span>
-            </div>
-          </div>
-        </div>
+    <div className="relative" style={{
+      backgroundColor: '#4B3DBF'
+    }}>
+      {/* Decorative background image layer (top, not stretched) */}
+      <div
+        aria-hidden
+        className=" top-0 inset-x-0 mx-auto"
+        style={{
+          width: '100%',
+          maxWidth: '80rem',
+          height: 700
+        }}
+      >
+        <img
+          src={bgImage}
+          alt=""
+          className="block pointer-events-none select-none"
+          style={{
+            height: 700,
+            width: '80rem',
+            mixBlendMode: 'luminosity'
+          }}
+        />
+      </div>
+      {/* Hero copy (centered just above the mobile image) */}
+      <section className="absolute inset-x-0 text-center pointer-events-none" style={{ top: 170, zIndex: 10 }}>
+        <h1 className="font-urbanist text-white text-3xl md:text-5xl font-semibold leading-tight mb-3">
+          Your City, Delivered <span className="text-[#FDD621]">in Minutes</span>
+        </h1>
+        <p className="font-urbanist text-white/80 text-base md:text-xl max-w-3xl mx-auto">
+          Groceries, Meals, and Dining Experiences — all from one super app.
+        </p>
       </section>
+
+      {/* Bottom device mockup: show only top half, centered at bottom */}
+      <div
+        aria-hidden
+        className="absolute inset-x-0 mx-auto overflow-hidden pointer-events-none flex justify-center"
+        style={{
+          top: 'calc(700px - 300px)',
+          height: 300,
+          maxWidth: '80rem',
+          width: '100%'
+        }}
+      >
+        <img
+          src={mobileImage}
+          alt=""
+          className="select-none block"
+          style={{
+            height: 600,
+            width: 'auto'
+          }}
+        />
+      </div>
 
       {/* Stats Section */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           <div className="text-center">
-            <div className="text-4xl font-bold text-blue-600 mb-2">10K+</div>
-            <div className="text-gray-600">Active Users</div>
+            <div className="text-4xl font-bold text-white mb-2">10K+</div>
+            <div className="text-gray-300">Active Users</div>
           </div>
           <div className="text-center">
-            <div className="text-4xl font-bold text-blue-600 mb-2">500+</div>
-            <div className="text-gray-600">Vendors</div>
+            <div className="text-4xl font-bold text-white mb-2">500+</div>
+            <div className="text-gray-300">Vendors</div>
           </div>
           <div className="text-center">
-            <div className="text-4xl font-bold text-blue-600 mb-2">99.9%</div>
-            <div className="text-gray-600">Uptime</div>
+            <div className="text-4xl font-bold text-white mb-2">99.9%</div>
+            <div className="text-gray-300">Uptime</div>
           </div>
           <div className="text-center">
-            <div className="text-4xl font-bold text-blue-600 mb-2">24/7</div>
-            <div className="text-gray-600">Support</div>
+            <div className="text-4xl font-bold text-white mb-2">24/7</div>
+            <div className="text-gray-300">Support</div>
           </div>
         </div>
       </section>
@@ -85,10 +86,10 @@ const Hero = () => {
       {/* Features Preview */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
             Everything you need to succeed
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-200 max-w-2xl mx-auto">
             Powerful features designed to help your business grow faster
           </p>
         </div>

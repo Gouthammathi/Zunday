@@ -18,12 +18,12 @@ const Header = () => {
   const isActive = (path) => location.pathname === path;
 
   return (
-    <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200">
+    <header className="sticky top-0 z-50">
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
-            <div className="text-2xl font-bold text-blue-600">Zunday</div>
+            <div className="text-2xl font-bold text-white">Zunday</div>
           </Link>
 
           {/* Desktop Navigation */}
@@ -34,8 +34,8 @@ const Header = () => {
                 to={link.path}
                 className={`text-sm font-medium transition-colors duration-200 ${
                   isActive(link.path)
-                    ? 'text-blue-600'
-                    : 'text-gray-700 hover:text-blue-600'
+                    ? 'text-[#FDD621]'
+                    : 'text-white hover:text-[#FDD621]'
                 }`}
               >
                 {link.name}
@@ -45,10 +45,10 @@ const Header = () => {
 
           {/* CTA Button */}
           <div className="hidden md:flex items-center space-x-4">
-            <button className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors">
+            {/* <button className="px-4 py-2 text-sm font-medium text-white hover:text-[#FDD621] transition-colors">
               Sign In
-            </button>
-            <button className="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition-colors">
+            </button> */}
+            <button className="px-4 py-2 text-sm font-medium text-white bg-transparent border-2 border-white rounded-lg hover:bg-[#FDD621] hover:border-[#FDD621] hover:text-gray-900 transition-colors">
               Get Started
             </button>
           </div>
@@ -56,10 +56,10 @@ const Header = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden p-2 rounded-lg hover:bg-gray-100"
+            className="md:hidden p-2 rounded-lg hover:bg-white/20"
           >
             <svg
-              className="w-6 h-6 text-gray-700"
+              className="w-6 h-6 text-white"
               fill="none"
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -78,7 +78,7 @@ const Header = () => {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden py-4 border-t border-gray-200">
+          <div className="md:hidden py-4 border-t border-white/20">
             <div className="flex flex-col space-y-4">
               {navLinks.map((link) => (
                 <Link
@@ -87,18 +87,18 @@ const Header = () => {
                   onClick={() => setIsMenuOpen(false)}
                   className={`text-sm font-medium transition-colors duration-200 ${
                     isActive(link.path)
-                      ? 'text-blue-600'
-                      : 'text-gray-700 hover:text-blue-600'
+                      ? 'text-[#FDD621]'
+                      : 'text-white hover:text-[#FDD621]'
                   }`}
                 >
                   {link.name}
                 </Link>
               ))}
-              <div className="pt-4 border-t border-gray-200 space-y-2">
-                <button className="w-full px-4 py-2 text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors">
+              <div className="pt-4 border-t border-white/20 space-y-2">
+                <button className="w-full px-4 py-2 text-sm font-medium text-white hover:text-[#FDD621] transition-colors">
                   Sign In
                 </button>
-                <button className="w-full px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition-colors">
+                <button className="w-full px-4 py-2 text-sm font-medium text-white bg-transparent border-2 border-white rounded-lg hover:bg-[#FDD621] hover:border-[#FDD621] hover:text-gray-900 transition-colors">
                   Get Started
                 </button>
               </div>
