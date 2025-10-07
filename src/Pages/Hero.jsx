@@ -10,6 +10,10 @@ import leftBottom from '../assets/left-b.svg';
 import rightTop from '../assets/right-t.svg';
 import rightBottom from '../assets/right-b.svg';
 import Features from './Features';
+import Vendors from './Vendors';
+import Team from './Team';
+import FAQ from './FAQ';
+import Contact from './Contact';
 
 const Hero = () => {
   return (
@@ -178,6 +182,18 @@ const Hero = () => {
       {/* Features section under hero - negative margin to eliminate gap */}
       <div id="features" style={{ marginTop: '-300px' }}>
         <Features />
+        <div id="vendors">
+          <Vendors />
+        </div>
+        <div id="team">
+          <Team />
+        </div>
+        <div id="faq">
+          <FAQ />
+        </div>
+        <div id="contact">
+          <Contact />
+        </div>
       </div>
     </div>
   );

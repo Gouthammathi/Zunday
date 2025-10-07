@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import bgImage from '../assets/bg.webp';
 
 const FAQ = () => {
   const [openIndex, setOpenIndex] = useState(null);
@@ -42,75 +43,51 @@ const FAQ = () => {
     setOpenIndex(openIndex === index ? null : index);
   };
 
+  const leftFaqs = faqs.filter((_, i) => i % 2 === 0);
+  const rightFaqs = faqs.filter((_, i) => i % 2 === 1);
+
   return (
-    <div className="bg-white py-20">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Frequently Asked Questions
-          </h1>
-          <p className="text-xl text-gray-600">
-            Everything you need to know about Zunday. Can't find what you're looking for?{' '}
-            <a href="/contact" className="text-blue-600 hover:text-blue-700">
-              Contact us
-            </a>
-          </p>
+    <section className="relative py-20" style={{ backgroundColor: '#4B3DBF' }}>
+      {/* Background */}
+      <div aria-hidden className="absolute top-0 inset-x-0 mx-auto" style={{ width: '100%', maxWidth: '80rem' }}>
+        <img src={bgImage} alt="" className="block pointer-events-none select-none" style={{ width: '80rem', height: 'auto', mixBlendMode: 'luminosity' }} />
+      </div>
+
+      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Heading */}
+        <div className="text-center mb-10">
+          <div className="flex items-center justify-center gap-4 mb-3">
+            <span className="hidden md:block flex-1 max-w-[240px] h-px border-t border-dashed border-[#FDD621]/80" style={{ borderWidth: '1px', borderImage: 'repeating-linear-gradient(to right, #FDD621 0px, #FDD621 8px, transparent 8px, transparent 12px) 1' }}></span>
+            <h2 className="font-urbanist text-white text-2xl md:text-3xl tracking-widest font-bold">FAQS</h2>
+            <span className="hidden md:block flex-1 max-w-[240px] h-px border-t border-dashed border-[#FDD621]/80" style={{ borderWidth: '1px', borderImage: 'repeating-linear-gradient(to right, #FDD621 0px, #FDD621 8px, transparent 8px, transparent 12px) 1' }}></span>
+          </div>
         </div>
 
-        {/* FAQ Accordion */}
-        <div className="space-y-4">
-          {faqs.map((faq, index) => (
-            <div
-              key={index}
-              className="bg-gray-50 rounded-lg overflow-hidden hover:shadow-md transition-shadow"
-            >
-              <button
-                onClick={() => toggleFAQ(index)}
-                className="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none"
-              >
-                <span className="text-lg font-semibold text-gray-900">
-                  {faq.question}
-                </span>
-                <svg
-                  className={`w-6 h-6 text-blue-600 transform transition-transform ${
-                    openIndex === index ? 'rotate-180' : ''
-                  }`}
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M19 9l-7 7-7-7"
-                  />
-                </svg>
-              </button>
-              {openIndex === index && (
-                <div className="px-6 pb-5">
-                  <p className="text-gray-600">{faq.answer}</p>
-                </div>
-              )}
+        {/* FAQ Columns - independent heights to avoid cross-stretching */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
+          {[leftFaqs, rightFaqs].map((col, colIdx) => (
+            <div key={colIdx} className="flex flex-col gap-6">
+              {col.map((faq, localIdx) => {
+                const globalIndex = colIdx === 0 ? localIdx * 2 : localIdx * 2 + 1;
+                const isOpen = openIndex === globalIndex;
+                return (
+                  <div key={globalIndex} className={`rounded-2xl backdrop-blur-md text-white transition-colors ${isOpen ? 'bg-white/15' : 'bg-white/10'}`}>
+                    <button onClick={() => toggleFAQ(globalIndex)} aria-expanded={isOpen} className="w-full px-6 py-5 text-left flex items-center gap-3">
+                      <span className={`flex items-center justify-center w-8 h-8 rounded-full shrink-0 transition-colors ${isOpen ? 'bg-[#FDD621] text-[#141414]' : 'bg-white/20 text-white'}`}>+
+                      </span>
+                      <span className="font-urbanist font-medium">{faq.question}</span>
+                    </button>
+                    <div className={`overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-40 px-6 pb-5 mt-3 opacity-100' : 'max-h-0 px-6 pb-0 mt-0 opacity-0'}`}>
+                      <p className="pl-5 md:pl-11 text-white/80 text-sm">{faq.answer}</p>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           ))}
         </div>
-
-        {/* Contact CTA */}
-        <div className="mt-16 text-center bg-blue-50 rounded-2xl p-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-3">
-            Still have questions?
-          </h2>
-          <p className="text-gray-600 mb-6">
-            Our team is here to help. Get in touch and we'll respond as soon as possible.
-          </p>
-          <button className="px-8 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors">
-            Contact Support
-          </button>
-        </div>
       </div>
-    </div>
+    </section>
   );
 };
 

@@ -17,14 +17,17 @@ const Header = () => {
 
   const isActive = (path) => location.pathname === path;
 
-  const handleFeaturesClick = (e) => {
-    // If we're on home, smooth scroll to #features
-    if (location.pathname === '/') {
+  const handleNavLinkClick = (name, e, isMobile = false) => {
+    if (location.pathname === '/' && (name === 'Features' || name === 'Vendors' || name === 'Team' || name === 'FAQ' || name === 'Contact')) {
       e.preventDefault();
-      const el = document.getElementById('features');
+      const targetId = name === 'Features' ? 'features' : name === 'Vendors' ? 'vendors' : name === 'Team' ? 'team' : name === 'FAQ' ? 'faq' : 'contact';
+      const el = document.getElementById(targetId);
       if (el) {
         el.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
+      if (isMobile) setIsMenuOpen(false);
+    } else if (isMobile) {
+      setIsMenuOpen(false);
     }
   };
 
@@ -43,7 +46,7 @@ const Header = () => {
               <Link
                 key={link.path}
                 to={link.path}
-                onClick={link.name === 'Features' ? handleFeaturesClick : undefined}
+                onClick={(e) => handleNavLinkClick(link.name, e, false)}
                 className={`text-sm font-medium transition-colors duration-200 ${
                   isActive(link.path)
                     ? 'text-[#FDD621]'
@@ -96,7 +99,7 @@ const Header = () => {
                 <Link
                   key={link.path}
                   to={link.path}
-                  onClick={() => setIsMenuOpen(false)}
+                  onClick={(e) => handleNavLinkClick(link.name, e, true)}
                   className={`text-sm font-medium transition-colors duration-200 ${
                     isActive(link.path)
                       ? 'text-[#FDD621]'
