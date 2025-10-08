@@ -107,9 +107,6 @@ export const Footer = () => {
             <p className="text-sm text-gray-400">
               © {currentYear} Zunday. All rights reserved.
             </p>
-            <p className="text-sm text-gray-400 mt-2 md:mt-0">
-              Made with ❤️ for better business solutions
-            </p>
           </div>
         </div>
       </div>
